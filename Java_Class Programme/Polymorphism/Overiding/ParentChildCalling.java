@@ -1,0 +1,27 @@
+class Parent{
+	Parent(){
+		System.out.println("In parent constructor");
+	}
+	void fun(){
+		System.out.println("In fun");
+	}
+}
+class Child extends Parent{
+	Child(){
+		System.out.println("In child constructor");
+	}
+	void gun(){
+		System.out.println("In gun");
+	}
+}
+class Client{
+	public static void main(String [] args){
+		Child obj1 = new Child();
+		obj1.fun();
+		obj1.gun();
+
+		Parent obj2 = new Parent();
+		obj2.fun();
+	//	obj2.gun();  //<---  cannot find symbol  gun() in parent , only child inherit parent , parent contain only parent method and properties
+	}
+}
