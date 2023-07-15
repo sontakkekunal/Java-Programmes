@@ -1,4 +1,4 @@
-import java.lang.*;
+//import java.lang.*;
 class Demo{
 	void fun(Object obj){
 		System.out.println("Object");
