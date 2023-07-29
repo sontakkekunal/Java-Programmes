@@ -1,6 +1,6 @@
 //WAP , to take 10 input from the user and print only element that are divisible by 5
-//Input: 10 2 2 3 3 3 4 4 25 25
-//Output:10 25 25
+//Input: 10 2 2 3 3 3 4 4 25 55
+//Output:10 25 55
 import java.util.Scanner;
 class ArrayEleDivisibleByNum{
 	public static void main(String [] args){
