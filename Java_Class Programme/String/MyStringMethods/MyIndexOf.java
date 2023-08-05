@@ -1,5 +1,6 @@
 import java.io.*;
-class MYIndexOf{
+//package myStringMethods;
+class MyIndexOf{
 	static int myIndexOf(String str,char ch,int num){
 		for(int i=num;i<str.length();i++){
 			if(str.charAt(i)==ch)
@@ -47,6 +48,7 @@ class MYIndexOf{
 		}
 		return -1;
         }
+	
 	public static void main(String [] args)throws IOException{
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter  string: ");
@@ -80,5 +82,6 @@ class MYIndexOf{
                 num=Integer.parseInt(br.readLine());
 		System.out.println("Index found at : "+myIndexOf(str,str1,num));
 	}
+		
 }
 

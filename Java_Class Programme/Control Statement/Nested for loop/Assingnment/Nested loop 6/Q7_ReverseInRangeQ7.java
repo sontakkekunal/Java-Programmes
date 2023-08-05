@@ -3,7 +3,9 @@
 //Input: Enter start: 100
 //Enter end: 200
 import java.io.*;
+//package myLogicalNum;
 class ReverseInRangeQ7{
+//class Q7_ReverseInRangeQ7{
 	int Reverse(int num){
 		int value=0;
 		while(num!=0){
@@ -12,6 +14,7 @@ class ReverseInRangeQ7{
 		}
 		return value;
 	}
+	
 	public static void main(String[] args )throws IOException{
 		BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter start : ");
@@ -25,5 +28,6 @@ class ReverseInRangeQ7{
 			System.out.print(value+" ");
 		}
 	}
+	
 }
 

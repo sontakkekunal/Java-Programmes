@@ -1,5 +1,6 @@
 import java.util.Scanner;
-class MyLengthOfString{
+//package myStringMethods;
+class MyStrLen{
     static int myLenStr(String str){
         int count=0;
         while(true){
@@ -13,6 +14,7 @@ class MyLengthOfString{
         }
         return count;
     }
+    
     public static void main(String [] args){
         Scanner sc= new Scanner(System.in);
         System.out.println("Enter string for finding length : ");
@@ -20,4 +22,5 @@ class MyLengthOfString{
         int len=myLenStr(str);
         System.out.println("Length of string is : "+len);
     }
+    
 }

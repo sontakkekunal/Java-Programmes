@@ -13,7 +13,9 @@
 //852347
 //The digit count in 852347 is 6
 import java.io.*;
+//package myLogicalNum;
 class DigitCountInRange{
+//public class Q6_DigitCount{
 	static int DigitCount(int num){
 		int count=0;
 		while(num!=0){
@@ -22,6 +24,7 @@ class DigitCountInRange{
 		}
 		return count;
 	}
+	
 	public static void main(String[] args )throws IOException{
 		BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
 		int arr[] = new int[5];
@@ -31,5 +34,6 @@ class DigitCountInRange{
 			System.out.println("\nThe Digit count in "+arr[i]+" is "+DigitCount(arr[i]));
 		}
 	}
+	
 }
 

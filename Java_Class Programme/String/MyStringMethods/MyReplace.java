@@ -1,5 +1,6 @@
 import java.io.*;
-class MyReplaceChar{
+//package myStringMethods;
+class MyReplace{
 	static String myReplace(String str,char ch1,char ch2){
 		char arr[]=str.toCharArray();
 		String value="";
@@ -20,16 +21,18 @@ class MyReplaceChar{
 						break;
 					if(j==str1.length()-1){
 						value=value+str2;
-						i=temp+1;
+						i=str1.length()+i;
 					}
 					temp++;
 				}
 			}
+			if(i>=str.length())
+				continue;
 			value=value+str.charAt(i);
 		}
 		return value;
         }
-
+	
 	public static void main(String [] args)throws IOException{
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter  string: ");
@@ -53,4 +56,5 @@ class MyReplaceChar{
 
 
 	}
+	
 }

@@ -6,6 +6,8 @@
 //Output: Palindrome numbers between 100 and 250
 //101 111 121 131 141 151 161 171 181 191 202 212 222
 import java.io.*;
+//package myLogicalNum;
+//public class Q8_PalindromeInRange{
 class PalindromeInRange{
 	boolean Palindrome(int num){
 		int temp=num;
@@ -19,6 +21,7 @@ class PalindromeInRange{
 		else
 			return false;
 	}
+	
 	public static void main(String[] args )throws IOException{
 		BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter start : ");
@@ -33,4 +36,5 @@ class PalindromeInRange{
 				System.out.print(i+" ");
 		}
 	}
+	
 }

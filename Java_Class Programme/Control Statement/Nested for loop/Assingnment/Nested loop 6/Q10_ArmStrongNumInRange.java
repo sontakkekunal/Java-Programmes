@@ -6,6 +6,8 @@
 //Output: Armstrong numbers between 1 and 1650
 //1 2 3 4 5 6 7 8 9 153 370 371 407 1634
 import java.io.*;
+//package myLogicalNum;
+//public class Q10_ArmStrongNumInRange{
 class ArmStrongNumInRange{
 	boolean ArmStrong(int num){
 		int temp1=num;
@@ -29,6 +31,7 @@ class ArmStrongNumInRange{
 		else
 			return false;
 	}
+	
 	public static void main(String[] args )throws IOException{
 		BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter start : ");
@@ -43,5 +46,6 @@ class ArmStrongNumInRange{
 				System.out.print(i+" ");
 		}
 	}
+	
 }
 

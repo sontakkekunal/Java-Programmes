@@ -8,6 +8,8 @@
 //Output: strong numbers between 1 and 150
 //1 2 145
 import java.io.*;
+//package myLogicalNum;
+//public class Q9_StrongInRange{
 class StrongInRange{
 	boolean Strong(int num){
 		int temp=num;
@@ -27,7 +29,7 @@ class StrongInRange{
 		else
 			return false;
 	}
-
+	
 	public static void main(String[] args )throws IOException{
 		BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter start : ");
@@ -42,4 +44,5 @@ class StrongInRange{
 				System.out.print(i+" ");
 		}
 	}
+	
 }

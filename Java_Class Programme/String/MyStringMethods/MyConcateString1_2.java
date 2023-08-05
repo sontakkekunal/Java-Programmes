@@ -1,5 +1,6 @@
 import java.io.*;
-class MyConcateString{
+//package myStringMethods;
+class MyConcateString1_2{
     static char[] myConcat(String str1,String str2){
         char arr1[]=str1.toCharArray();
         char arr2[]=str2.toCharArray();
@@ -15,6 +16,7 @@ class MyConcateString{
         }
         return arr3;
     }
+    
     public static void main(String [] args)throws IOException{
         BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Concatenating the two String ");
@@ -25,4 +27,5 @@ class MyConcateString{
         String concated = new String(myConcat(str1,str2));
         System.out.println("Conatenated Stringis : "+concated);
     }
+    
 }

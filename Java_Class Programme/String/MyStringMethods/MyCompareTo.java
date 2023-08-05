@@ -1,4 +1,5 @@
 import java.io.*;
+//package myStringMethods;
 class MyCompareTo{
 	static int myCompair(String str1,String str2){
 		int mini;
@@ -14,7 +15,7 @@ class MyCompareTo{
 		}
 		return str1.length()-str2.length();
 	}
-
+	
 	public static void main(String [] args)throws IOException{
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter first string: ");
@@ -24,4 +25,5 @@ class MyCompareTo{
 		int compair=myCompair(str1,str2);
 		System.out.println("Differnce is : "+compair);
 	}
+	
 }

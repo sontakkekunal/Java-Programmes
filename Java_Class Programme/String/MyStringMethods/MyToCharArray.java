@@ -1,4 +1,5 @@
 import java.io.*;
+//package myStringMethods;
 class MyToCharArray{
 	static char[] myToCharArray(String str){
 		char ch[]=new char[str.length()];
@@ -7,6 +8,7 @@ class MyToCharArray{
 		}
 		return ch;
 	}
+	
 	public static void main(String [] args)throws IOException{
         BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter String for covertiing it to array :  ");

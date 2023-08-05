@@ -7,7 +7,9 @@
 //Output: perfect numbers between 1 and 30
 //6 28
 import java.io.*;
+//package myLogicalNum;
 class PerfectNumInRange{
+//class Q5_PerfectNumInRangeQ5{
 	static boolean Perfect(int num){
 		int sum=0;
 		for(int i=1;i<num;i++){
@@ -19,6 +21,7 @@ class PerfectNumInRange{
 		else
 			return false;
 	}
+	
 	public static void main(String[] args )throws IOException{
 		BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter start : ");
@@ -32,4 +35,5 @@ class PerfectNumInRange{
 				System.out.print(i+" ");
 		}
 	}
+	
 }
