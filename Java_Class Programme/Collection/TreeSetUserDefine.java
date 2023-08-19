@@ -4,7 +4,7 @@ class MyClass implements Comparable{
 	//static Object obb=null;
 	//static int num=0;
 	MyClass(String str){
-		num++;
+		//num++;
 		this.str=str;
 	}
 	public int compareTo(Object obj){
