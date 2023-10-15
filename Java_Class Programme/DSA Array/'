@@ -1,0 +1,44 @@
+
+import java.util.*;
+class ArrayRotation{
+        public static void main(String [] args){
+                Scanner sc= new Scanner(System.in);
+                System.out.println("Enter Array size: ");
+                int N=sc.nextInt();
+                System.out.println("Enter array: ");
+                int arr[]= new int[N];
+                for(int i=0;i<N;i++){
+                        arr[i]=sc.nextInt();
+                }
+                System.out.println("Enter rotation: ");
+                int B=sc.nextInt();
+		int j=0;
+		int temp=0;
+                for(int i=0;i<N;i++){
+			if(j+B<N){
+				int temp1=0;
+
+				temp1=arr[j+B];
+				arr[j+B]=temp;
+				temp=temp1;
+			}
+			else{
+				/*
+				int temp1=arr[j];
+                                arr[j]=temp;
+                                temp=temp1;
+				*/
+
+				int temp1=arr[N-j];
+                                arr[N-j]=temp;
+                                temp=temp1;
+			}
+			j=j+B;
+                        
+                }
+                System.out.println("Output: ");
+                for(int i=0;i<N;i++){
+                        System.out.print(arr[i]+"  ");
+                }
+        }
+}

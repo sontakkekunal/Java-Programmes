@@ -5,11 +5,15 @@ class NaughtyUserException extends Exception{
 	}
 }
 class Writer extends Thread{
+	Reader r=null;
+	Writer(Reader r){
+		this.r=r;
+	}
 	public void run(){
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		File f1=new File("Communication.txt");
-		if(f1.exists())
-			f1.delete();
+		if(f1.exists());
+			//f1.delete();
 		//f1.close();
 		String str="";
 		try{
@@ -18,23 +22,30 @@ class Writer extends Thread{
 			if(!(f.exists()))
 				f.createNewFile();
 			FileWriter fw= new FileWriter(f,true);
+			System.out.println("Enter your message: "); 
 			str=br.readLine();
+			if(str.equals("")){
+				r.join(500);
+				continue;
+			}
 			if(str.equals("ks.stop")){
 				str="!";
 			}
-			fw.write(str+  "\n");
+			fw.write(str+  "\n.");
+			r.track++;
 			fw.close();
 			/*
 			if(str.contains("boobs"||"Boobs"))
 				throw new NaughtyUserException("Halwa ha kya! ");
 				*/
-			Thread.sleep(1000);
+			r.join(500);
 		}
 		}catch(IOException ie){}
 		catch(InterruptedException ie){}
 	}
 }
 class Reader extends Thread{
+	int track=0;
 	public void run(){
 		//BufferedReader br = new BufferedReader(new InputSteamReader(System.in));
                 File f1=new File("Communication.txt");
@@ -43,46 +54,55 @@ class Reader extends Thread{
                 if(!f1.exists())
                         throw new FileNotFoundException("File nahi yaa");
 			*/
-		System.out.println("in");
 		FileReader fr= new FileReader(f1);
 		int data=fr.read();
-		int i=0;
-		int track=0;
+		int i=1;
 		boolean flag=true;
+		boolean flagS=true;
 		while(data!=33){
-			System.out.println("hi");
 			while(data==-1){
 				if(flag){
 					track=i;
 					flag=false;
+				}
 				data=fr.read();
 				f1=new File("Communication.txt");
 				fr=new FileReader(f1);
 				i=0;
-				}
+				
 			}
 			flag=true;
-			if(i>=track){
-				System.out.println("User1: "+((char)data));
-			}	
-			if(data==10){
+			if(i>track){
+				if(data!=46){
+					if(flagS){
+						System.out.println("User1: ");
+						flagS=false;
+					}
+					System.out.print(((char)data));
+				}
+				else
+					System.out.print(((char)data)+"User1: ");
+				Thread.sleep(1000);
+			}
+			//System.out.println("User1: "+((char)data));	
+			if(data==46){
 				i++;
 			}
 			data=fr.read();
 		}
 		}catch(IOException ie){}
+		catch(InterruptedException ie){}
 	}
 }
 class FileTransferChatBot1{
 	public static void main(String [] args)throws InterruptedException{
-		Writer w = new Writer();
-		w.start();
-
-		Thread.sleep(500);
-
 		Reader r= new Reader();
-		r.start();
+		Writer  w = new Writer(r);
+
+		w.start();
+		
+		Thread.sleep(400);
+			
+		r.start();	
 	}
 }
-
-
