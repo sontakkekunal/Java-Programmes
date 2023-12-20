@@ -1,3 +1,25 @@
+/*
+ 6. Add two numbers represented by Linked List
+Given two numbers represented by two linked lists, write a function that returns a Sum list. The
+sum list is a linked list representation of addition of two input numbers.
+Example 1:
+Input:
+S1 = 3, S2 = 3
+ValueS1 = {2,3,4}
+ValueS2 = {3,4,5}
+Output: 5 7 9
+Explanation: After adding the 2 numbers the resultant number is 5 7 9.
+
+Example 2:
+Input:
+S1 = 1, S2 = 2
+ValueS1 = {9}
+ValueS2 = {8,7}
+Output: 9 6
+Explanation: Add 9 and 7 we get 16. 1 is carried here and is added to 8. So the answer is 9 6
+Constraints:
+1 <= S1, S2 <= 100
+  */
 import java.util.Scanner;
 class Node{
 	Node next=null;
@@ -281,66 +303,32 @@ class Client{
 						temp1=temp1.previous;
 						temp2=temp2.previous;
 					}
-					boolean flag=true;
 					while(temp1!=null){
 						int sum=temp1.data+carry;
-						if(flag && sum>9){
-							dllResult.addFirst(sum%10);
-							carry=sum/10;
-						}
-						else{
-							dllResult.addFirst(sum);
-							carry=sum/10;
-						}
-						if(carry<=0)
-							flag=false;
+						dllResult.addFirst(sum);
+                                                carry=0;
 						temp1=temp1.previous;
 					}
 					while(temp2!=null){
                                                 int sum=temp2.data+carry;
-                                                if(flag && sum>9){
-                                                        dllResult.addFirst(sum%10);
-                                                        carry=sum/10;
-                                                }
-                                                else{
-                                                        dllResult.addFirst(sum);
-                                                        carry=sum/10;
-                                                }
-                                                if(carry<=0)
-                                                        flag=false;
+                                               	dllResult.addFirst(sum);
+						carry=0;
                                                 temp2=temp2.previous;
                                         }
 					/*
 					 //Or
-					 boolean flag=true;
 					 while(temp1!=null || temp2!=null){
 						if(temp1!=null){
 							int sum=temp1.data+carry
-							if(flag && sum>9){
-								dllResult.addFirst(sum%10);
-								carry=sum/10;
-							}
-							else{
-                	                                        dllResult.addFirst(sum);
-        	                                                carry=sum/10;
-	                                                }
+							dllResult.addFirst(sum);
 							temp1=temp1.previous;
                 	                        }
 						else{
 							int sum=temp2.data+carry
-                                                        if(flag && sum>9){
-                                                                dllResult.addFirst(sum%10);
-                                                                carry=sum/10;
-                                                        }
-                                                        else{
-                                                                dllResult.addFirst(sum);
-                                                                carry=sum/10;
-                                                        }
+                                                        dllResult.addFirst(sum);
                                                         temp2=temp2.previous;
 	                                        }
-						if(carry<=0){
-							flag=false;
-						}
+						carry=0;
 					 }
 					 */
 					System.out.println("Added linked list is: ");

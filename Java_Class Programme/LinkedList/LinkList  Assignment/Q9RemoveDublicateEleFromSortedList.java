@@ -1,24 +1,25 @@
 /*
- 6. Add two numbers represented by Linked List
-Given two numbers represented by two linked lists, write a function that returns a Sum list. The
-sum list is a linked list representation of addition of two input numbers.
+ 9. Remove duplicate element from sorted Linked List
+Given a singly linked list consisting of N nodes. The task is to remove duplicates (nodes with
+duplicate values) from the given list (if exists).
+
+Note: Try not to use extra space. The nodes are arranged in a sorted way.
 Example 1:
 Input:
-S1 = 3, S2 = 3
-ValueS1 = {2,3,4}
-ValueS2 = {3,4,5}
-Output: 5 7 9
-Explanation: After adding the 2 numbers the resultant number is 5 7 9.
-
+LinkedList: 2->2->4->5
+Output: 2 4 5
+Explanation: In the given linked list 2 ->2 -> 4-> 5, only 2 occurs more than 1 time. So we need
+to remove it once.
 Example 2:
 Input:
-S1 = 1, S2 = 2
-ValueS1 = {9}
-ValueS2 = {8,7}
-Output: 9 6
-Explanation: Add 9 and 7 we get 16. 1 is carried here and is added to 8. So the answer is 9 6
+LinkedList: 2->2->2->2->2
+Output: 2
+Explanation: In the given linked list 2 ->2 ->2 ->2 ->2, 2 is the only element and is repeated 5
+times. So we need to remove any four 2.
+Expected Time Complexity : O(N)
+Expected Auxiliary Space : O(1)
 Constraints:
-1 <= S1, S2 <= 100
+1 <= Number of nodes <= 10^5
 */
 import java.util.Scanner;
 class Node{
@@ -141,33 +142,56 @@ class SingleLinkedList{
 			System.out.println("Deletd node at position: "+pos1);
 		}
 	}
+	void dublicateRemoval(){
+		if(head==null){
+			System.out.println("Linked list is empty: ");
+			return;
+		}
+		Node temp=head;
+		int data1=head.data;
+		Node address=null;
+		int count=0;
+		while(temp!=null){
+			if(data1==temp.data){
+				if(count==0)
+					address=temp;
+				count++;
+			}
+			else{
+				if(count>1){
+					address.next=temp;
+				}
+				count=1;
+				data1=temp.data;
+				address=temp;
+			}
+
+			temp=temp.next;
+		}
+		if(count>1){
+			address.next=temp;
+		}
+		System.out.println("Linked list after removing dublicate will be: ");
+		printLL();
+	}
 }
 class Client{
 	public static void main(String [] args){
 		Scanner sc= new Scanner(System.in);
 		SingleLinkedList sll= new SingleLinkedList();
-		SingleLinkedList sll2 = new SingleLinkedList();
-		System.out.println("Single linkedlist");
+		System.out.println("Single LL dublicateRemoval");
 		char ch;
 		do{
-			System.out.println("1.addFirst1");
-			System.out.println("2.addFirst2");
-			System.out.println("3.addLast1");
-			System.out.println("4.addLast2");
-			System.out.println("5.addAtPos1");
-			System.out.println("6.addAtPos2");
-			System.out.println("7.printLL1");
-			System.out.println("8.printLL2");
-			System.out.println("9.countNode1");
-			System.out.println("10.countNode2");
-			System.out.println("11.deleteFirst1");
-			System.out.println("12.deleteFirst2");
-			System.out.println("13.deleteLast1");
-			System.out.println("14.deleteLast2");
-			System.out.println("15.deleteAtPos1");
-			System.out.println("16.deleteAtPos2");
-
-			System.out.println("Enter 1/2/3/4/5/6/7/8 for choosing above funtionlity");
+			System.out.println("1.addFirst");
+			System.out.println("2.addLast");
+			System.out.println("3.addAtPos");
+			System.out.println("4.printLL");
+			System.out.println("5.countNode");
+			System.out.println("6.deleteFirst");
+			System.out.println("7.deleteLast");
+			System.out.println("8.deleteAtPos");
+			System.out.println("9.dublicateRemoval");
+			System.out.println("Enter 1/2/3/4/5/6/7/8/9 for choosing above funtionlity");
 			int choice =sc.nextInt();
 			switch(choice){
 				case 1:
@@ -175,67 +199,35 @@ class Client{
 					sll.addFirst(sc.nextInt());
 					break;
 				case 2:
-                                        System.out.println("Enter data to add: ");
-                                        sll2.addFirst(sc.nextInt());
-                                        break;
-				case 3:
 					System.out.println("Enter data to add: ");
                                         sll.addLast(sc.nextInt());
 					break;
-				case 4:
-                                        System.out.println("Enter data to add: ");
-                                        sll2.addLast(sc.nextInt());
-                                        break;
-				case 5:
+				case 3:
+
 					System.out.println("Enter data to add: ");
                                         int data=sc.nextInt();
 					System.out.println("Enter position: ");
 					sll.addAtPos(sc.nextInt(),data);
 					break;
-				case 6:
-                                        System.out.println("Enter data to add: ");
-                                        int data1=sc.nextInt();
-                                        System.out.println("Enter position: ");
-                                        sll2.addAtPos(sc.nextInt(),data1);
-                                        break;
-				case 7:
+				case 4:
 					System.out.println("LinkedList is: ");
 					sll.printLL();
 					break;
-				case 8:
-                                        System.out.println("LinkedList is: ");
-                                        sll2.printLL();
-                                        break;
-				case 9:
+				case 5:
 					System.out.println("Count of node is: "+sll.countNode());
 					break;
-				case 10:
-                                        System.out.println("Count of node is: "+sll2.countNode());
-                                        break;
-				case 11:
+				case 6:
 					sll.deleteFirst();
 					break;
-				case 12:
-                                        sll2.deleteFirst();
-                                        break;
-				case 13:
+				case 7:
 					sll.deleteLast();
 					break;
-				case 14:
-                                        sll2.deleteLast();
-                                        break;
-				case 15:
+				case 8:
 					System.out.println("Enter position to delete");
 					sll.deleteAtPos(sc.nextInt());
 					break;
-				case 16:
-                                        System.out.println("Enter position to delete");
-                                        sll2.deleteAtPos(sc.nextInt());
-                                        break;
-				case 17:
-					Node temp1=sll.head;
-					Node temp2=sll2.head;
-					while
+				case 9:
+					sll.dublicateRemoval();
 					break;
 				default:
 					System.out.println("please enter vaild choice");
