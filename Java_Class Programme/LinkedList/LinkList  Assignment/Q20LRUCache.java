@@ -70,13 +70,15 @@ class Map{
 	int cap;
 	Map(int cap){
 		this.cap=cap;
+		this.head=null;
 	}
-	LRUCache head=null;
+	LRUCache head;
 	int countNode(){
 		LRUCache temp=head;
 		int count=0;
 		while(temp!=null){
 			temp=temp.next;
+			count++;
 		}
 		return count;
 	}
@@ -89,8 +91,9 @@ class Map{
 		temp.next= newLRU;
 	}
 	void set(int key, int value){
+		LRUCache newLRU= new LRUCache(key,value);
 		if(countNode()==0){
-			setAdd(key,value);
+			head=newLRU;
 			System.out.println("node added at first succesfully");
 			return;
 		}
@@ -103,6 +106,39 @@ class Map{
 				System.out.println("value "+value+ " replaced at key "+key+" succesfully");
 				break;
 			}
+			temp=temp.next;
+		}
+		if(flag==false){
+			LRUCache temp1=head;
+			//System.out.println(temp.key);
+			//System.out.println("here2");
+			if(temp1==temp){
+				while(temp1.next!=null){
+					temp1=temp1.next;
+				}
+			//	System.out.println(temp1.key);
+			//	System.out.println(temp.key);
+			//	System.out.println(head.key);
+				head=temp.next;
+				temp.next=null;
+				temp1.next=temp;
+				System.out.println("adter");
+				//System.out.println(temp1.key);
+                               // System.out.println(temp.key);
+                               // System.out.println(head.key);
+				return;
+			}
+			while(temp1.next!=temp){
+				temp1=temp1.next;
+			}
+			//System.out.println("here1");
+			temp1.next=temp.next;
+			temp1=head;
+			//System.out.println("here");
+			while(temp1.next!=null){
+				temp1=temp1.next;
+                        }
+			temp1.next=temp;
 		}
 		if(flag && countNode()==cap){
 			head=head.next;
@@ -115,15 +151,42 @@ class Map{
 			System.out.println("(key,value) pair added at last ");
 		}
 	}
+	void attachAtLast(LRUCache node){
+		LRUCache temp=head;
+		while(temp.next!=null){
+			temp=temp.next;
+		}
+		temp.next=node;
+	}
 	int get(int key){
+		boolean flag=false;
 		LRUCache temp=head;
 		while(temp!=null){
 			if(temp.key==key){
-				return temp.value;
+				flag=true;
+				break;
 			}
 			temp=temp.next;
 		}
-		return -1;
+		if(temp==head && flag && countNode()!=1){
+			head=head.next;
+			temp.next=null;
+			attachAtLast(temp);
+		}
+		else if(temp!=null && temp.next==null && flag){}
+		else if(flag){
+			LRUCache temp1=head;
+			while(temp1.next!=temp){
+				temp1=temp1.next;
+			}
+			temp1.next=temp.next;
+			temp.next=null;
+			attachAtLast(temp);
+		}
+		if(flag)
+			return temp.value;
+		else
+			return -1;
 	}
 	void printM(){
 		LRUCache temp=head;
@@ -140,6 +203,7 @@ class Map{
 				System.out.print(temp.key+" -> "+temp.value);
 			temp=temp.next;
 		}
+		System.out.println(" }");
 	}
 }
 class Client{
@@ -148,6 +212,7 @@ class Client{
 		System.out.println("Enter size of LRUCache: ");
 		Map m= new Map(sc.nextInt());
 		System.out.println("LRUCache creted succesfully");
+		char ch;
 		do{
 			System.out.println("1.set(key,value)");
 			System.out.println("2.get(key)");
@@ -160,15 +225,23 @@ class Client{
 					System.out.println("Enter key to add: ");
 					int key=sc.nextInt();
 					System.out.println("Enter value to add with key: ");
+					int value=sc.nextInt();
 					m.set(key,value);
 					break;
 				case 2:
-					System.out.println("Enter key for getting is vaLU
-
+					System.out.println("Enter key for getting is value: ");
+					int val=m.get(sc.nextInt());
+					if(val==-1)
+							System.out.println("Invaild key ");
+					else
+						System.out.println("Value of key is: "+val);
 					break;
 				case 3:
+					System.out.println("Number of nodes in map are: "+m.countNode());
 					break;
 				case 4:
+					System.out.println("Map is: ");
+					m.printM();
 					break;
 				default:
 					System.out.println("Plese enter vaild choice");
