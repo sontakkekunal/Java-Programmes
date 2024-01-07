@@ -14,7 +14,7 @@ class CircularQueueInLL{
 		maxSize=size;
 	}
 	CircularQueueInLL(){
-		maxSize=2048;
+		maxSize=1024;
 	}
 	int countNode(){
 		if(front==null)
