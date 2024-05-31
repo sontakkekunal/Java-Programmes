@@ -28,6 +28,7 @@ class BinaryTreeConstruct{
 			int choice=bt.sc.nextInt();
 			switch(choice){
 				case 1:
+					System.out.println();
 					break;
 				case 2:
 					break;
